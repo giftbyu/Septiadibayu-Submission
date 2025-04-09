@@ -27,8 +27,8 @@ season_order = ['Spring', 'Summer', 'Fall', 'Winter']
 @st.cache_data
 def load_data():
     try:
-        day_df = pd.read_csv("cleaned_day_data.csv")
-        hour_df = pd.read_csv("cleaned_hour_data.csv")
+        day_df = pd.read_csv("cleaned-day.csv")
+        hour_df = pd.read_csv("cleaned-hour.csv")
         
         for df in [day_df, hour_df]:
             df['dteday'] = pd.to_datetime(df['dteday'])
