@@ -24,7 +24,6 @@ season_order = ['Spring', 'Summer', 'Fall', 'Winter']
 # =============================================
 # FUNGSI UTAMA
 # =============================================
-@st.cache_data
 def load_data():
     try:
         day_df = pd.read_csv("cleaned_day_data.csv")
