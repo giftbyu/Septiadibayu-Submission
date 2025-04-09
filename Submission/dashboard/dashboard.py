@@ -3,6 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
+day_df = pd.read_csv("cleaned-day.csv")
+hour_df = pd.read_csv("cleaned-hour.csv")
 # =============================================
 # KONFIGURASI DATA
 # =============================================
@@ -27,7 +30,7 @@ season_order = ['Spring', 'Summer', 'Fall', 'Winter']
 def load_data():
     try:
         day_df = pd.read_csv("cleaned-day.csv")
-        hour_df = pd.read_csv("/mount/src/Septiadibayu-Submission/Submission/dashboard/cleaned_hour_data.csv")
+        hour_df = pd.read_csv("cleaned-hour.csv")
         
         for df in [day_df, hour_df]:
             df['dteday'] = pd.to_datetime(df['dteday'])
