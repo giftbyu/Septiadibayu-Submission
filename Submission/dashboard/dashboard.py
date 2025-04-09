@@ -26,8 +26,8 @@ season_order = ['Spring', 'Summer', 'Fall', 'Winter']
 # =============================================
 def load_data():
     try:
-        day_df = pd.read_csv("dashboard/cleaned_day_data.csv")
-        hour_df = pd.read_csv("dashboard/cleaned_hour_data.csv")
+        day_df = pd.read_csv("/mount/src/Septiadibayu-Submission/Submission/dashboard/cleaned_day_data.csv")
+        hour_df = pd.read_csv("/mount/src/Septiadibayu-Submission/Submission/dashboard/cleaned_hour_data.csv")
         
         for df in [day_df, hour_df]:
             df['dteday'] = pd.to_datetime(df['dteday'])
