@@ -4,8 +4,22 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-day_df = pd.read_csv("cleaned-day.csv")
-hour_df = pd.read_csv("cleaned-hour.csv")
+def load_data():
+    try:
+        day_df = pd.read_csv("cleaned-day.csv")
+        hour_df = pd.read_csv("cleaned-hour.csv")
+        
+        for df in [day_df, hour_df]:
+            df['dteday'] = pd.to_datetime(df['dteday'])
+            df['weather'] = df['weathersit'].map(weather_map)
+            df['season'] = df['season'].map({1: 'Spring', 2: 'Summer', 3: 'Fall', 4: 'Winter'})
+            df['month'] = df['mnth'].map(month_map)
+            
+        return day_df, hour_df
+    except Exception as e:
+        st.error(f"Error loading data: {str(e)}")
+        return None, None
+        
 # =============================================
 # KONFIGURASI DATA
 # =============================================
@@ -23,25 +37,6 @@ weather_map = {
 }
 
 season_order = ['Spring', 'Summer', 'Fall', 'Winter']
-
-# =============================================
-# FUNGSI UTAMA
-# =============================================
-def load_data():
-    try:
-        day_df = pd.read_csv("cleaned-day.csv")
-        hour_df = pd.read_csv("cleaned-hour.csv")
-        
-        for df in [day_df, hour_df]:
-            df['dteday'] = pd.to_datetime(df['dteday'])
-            df['weather'] = df['weathersit'].map(weather_map)
-            df['season'] = df['season'].map({1: 'Spring', 2: 'Summer', 3: 'Fall', 4: 'Winter'})
-            df['month'] = df['mnth'].map(month_map)
-            
-        return day_df, hour_df
-    except Exception as e:
-        st.error(f"Error loading data: {str(e)}")
-        return None, None
 
 # =============================================
 # ANTARMUKA PENGGUNA
