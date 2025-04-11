@@ -34,8 +34,8 @@ season_map = {
 @st.cache_data
 def load_data():
     try:
-        day_df = pd.read_csv("cleaned-day.csv")
-        hour_df = pd.read_csv("cleaned-hour.csv")
+        day_df = pd.read_csv("/mount/src/septiadibayu-submission/Submission/dashboard/cleaned-day.csv")
+        hour_df = pd.read_csv("/mount/src/septiadibayu-submission/Submission/dashboard/cleaned-hour.csv")
         
         # Proses data sesuai notebook
         for df in [day_df, hour_df]:
